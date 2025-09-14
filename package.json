@@ -1,6 +1,6 @@
 {
   "name": "poster-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "模仿风格的纯前端效果封面生成",
   "type": "module",
   "files": [
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://cnb.cool/arsrna/os/react-fade-slider"
+    "url": "https://cnb.cool/arsrna/os/cover-generator"
   },
   "keywords": [
     "poster",
@@ -34,9 +34,9 @@
   "author": "ArSrNa",
   "license": "GNU",
   "bugs": {
-    "url": "https://cnb.cool/arsrna/os/react-fade-slider/-/issues"
+    "url": "https://cnb.cool/arsrna/os/cover-generator/-/issues"
   },
-  "homepage": "https://os.arsrna.cn/demo/nodejs/react-fade-slider",
+  "homepage": "https://os.arsrna.cn/demo/nodejs/poster-generator",
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/node": "^24.3.1",
