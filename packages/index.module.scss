@@ -1,0 +1,50 @@
+.container {
+    // display: flex;
+    position: relative;
+    font-family: PingFangSC-Regular, PingFangSC-Regular !important;
+}
+
+
+.img,
+.img-mask {
+    background-image: var(--img-url);
+    width: 100%;
+    height: var(--height);
+    transform-origin: center;
+    transform: scale(var(--scale));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.img-mask {
+    position: absolute;
+    z-index: 2;
+    filter: blur(var(--blur)) saturate(1.2);
+    backdrop-filter: blur(20px);
+    mask-image: var(--linear-gradient);
+}
+
+.img-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.test-mask {
+    background-image: var(--linear-gradient);
+    height: 25px;
+}
+
+.layer-container {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    background-image: var(--text-linear-gradient);
+    mask-repeat: no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -4,7 +4,38 @@ body {
     // color: white;
 }
 
-a {
-    color: cyan;
-    text-decoration: none;
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >h1 {
+        font-size: 3.2rem;
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: 10px;
+    }
+
+    >div {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        //视觉补偿
+        margin-right: 35px;
+
+        >span {
+            font-size: 3.2rem;
+            letter-spacing: 6px;
+            font-weight: 600;
+        }
+
+        >.content-mask {
+            width: 50px;
+            height: 50px;
+            mask-image: url("https://docs.cnb.cool/images/logo/320/Symbol-Black.png");
+            mask-size: cover;
+            background-image: linear-gradient(45deg, #89b8eeff 20%, #e0edffff 80%);
+        }
+    }
 }
