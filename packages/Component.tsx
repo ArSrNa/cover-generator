@@ -24,13 +24,13 @@ export default function Component(props: {
 
     /**放大，防止blur太高边缘失真问题 */
     scale?: number;
-    /**设置过渡范围，表示从左到右模糊过渡的阈值
+    /**设置过渡范围，表示模糊过渡的阈值
      * @example 
-     * [1, 0.6, 0.2, 0] -> 0%-20% 清晰；20%-60%逐渐清晰；60%-100% 不模糊
+     * [0.2, 0.6] -> 0%-20% 清晰；20%-60%逐渐清晰；60%-100% 不模糊
      * 
-     * 数组四个值表示模糊范围在 [0]和[1]之间，模糊到清晰的过渡在[1]和[2]之间，不模糊的范围在[2]和[3]之间
+     * 数组值表示模糊到清晰过渡范围在 [0]和[1]之间，[0]之前模糊，[1]之后清晰
      */
-    range?: [number, number, number, number];
+    range?: [number, number];
     filter?: {
         /**遮罩filter */
         mask?: CSSProperties['filter']
@@ -46,7 +46,7 @@ export default function Component(props: {
         backgroundStyle,
         height = 300,
         scale = 1.08,
-        range = [1, 0.45, 0.25, 0],
+        range = [0.45, 0.25],
         filter = { mask: `blur(20px) saturate(1.5)` },
         test = false,
         contentStyle = {
@@ -55,10 +55,10 @@ export default function Component(props: {
     } = props;
 
     const gradient = `linear-gradient(to left, 
-        #00000000 ${range[3] * 100}%, 
-        #00000000 ${range[2] * 100}%, 
-        #000000ff ${range[1] * 100}%, 
-        #000000ff ${range[0] * 100}%)`
+        #00000000 0%, 
+        #00000000 ${range[1] * 100}%, 
+        #000000ff ${range[0] * 100}%, 
+        #000000ff 100%)`
 
     const imgStyle = {
         ...backgroundStyle,
