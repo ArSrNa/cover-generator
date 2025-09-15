@@ -81,6 +81,6 @@ pnpm start
 | `backgroundStyle` | `CSSProperties` | 否 | 背景样式，修改 `background` 属性即可更改背景属性 | 无 |
 | `height` | `CSSProperties['height']` | 否 | 图片高度 | `300` |
 | `scale` | `number` | 否 | 放大比例，防止 `blur` 太高边缘失真问题 | `1.08` |
-| `range` | `[number, number, number, number]` | 否 | 模糊过渡范围，表示从左到右模糊过渡的阈值 | `[1, 0.45, 0.25, 0]` |
+| `range` | `[number, number]` | 否 | 模糊过渡范围，表示从左到右模糊过渡的阈值 | `[0.2, 0.6]` |
 | `filter` | `{ mask?: CSSProperties['filter'], background?: CSSProperties['filter'] }` | 否 | 遮罩和背景的滤镜效果 | `{ mask: 'blur(20px) saturate(1.5)' }` |
 | `test` | `boolean` | 否 | 是否启用测试遮罩 | `false` |
