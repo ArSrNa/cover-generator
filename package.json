@@ -1,10 +1,11 @@
 {
   "name": "poster-generator",
   "version": "1.0.1",
-  "description": "模仿风格的纯前端效果封面生成",
+  "description": "纯前端效果封面生成",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "image"
   ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
