@@ -4,22 +4,21 @@ $:
         - vscode
         - docker
       docker:
-        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        image: docker.cnb.cool/arsrna/dev-image/nodejs
         volumes:
           - /root/.npm
-          - /root/.pnpm-store
+          - /root/.bun/install/cache
       imports:
         - https://cnb.cool/arsrna/env/-/blob/main/npm.yml
       runner:
         cpus: 16
       stages:
         - name: 安装依赖
-          script: pnpm install
-        - name: 构建
-          script: npm run build
+          script: bun install
 
   push:
-    - stages:
+    sync-github:
+      stages:
         - name: sync to github
           image: tencentcom/git-sync
           imports:
@@ -31,17 +30,41 @@ $:
             password: ${GIT_ACCESS_TOKEN}
             git_email: "root@arsrna.cn"
 
+    coverage_test:
+      docker:
+        image: node:24
+        volumes:
+          - /root/.bun/install/cache
+          - /root/.npm
+      stages:
+        - name: bun
+          script: npm i -g bun
+        - name: 测试覆盖率
+          script:
+            - bun i
+            - bun test
+        - name: coverage
+          type: testing:coverage
+          options:
+            diffLines: 91.78 # 增量覆盖率红线
+          exports:
+            lines: LINES
+            diff_pct: DIFF_LINES
+        - name: result
+          script: echo echo "LINES $LINES DIFF_LINES $DIFF_LINES"
+
   # tag push 时触发
   tag_push:
     - docker:
-        image: docker.cnb.cool/arsrna/dev-env/node22:latest
+        image: node:24
       runner:
-        cpus: 16
+        cpus: 32
       stages:
         - name: 构建部署
           script:
-            - pnpm i
-            - npm run build
+            - npm i -g bun
+            - bun i
+            - bun run build
             - echo $CNB_BRANCH
         - name: update version
           # 修改 package.json 中的version为当前tag，但不会提交代码

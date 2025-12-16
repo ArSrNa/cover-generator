@@ -1,5 +1,9 @@
 # 纯前端生成封面效果
 
+![badge](https://cnb.cool/arsrna/os/vite-react-template/-/badge/git/latest/ci/status/push)
+
+![badge](https://cnb.cool/arsrna/os/vite-react-template/-/badge/git/latest/testing/unit/coverage)
+
 就是实现这样的效果
 
 ![](image/image.png)
